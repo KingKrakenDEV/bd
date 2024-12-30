@@ -27,7 +27,7 @@ window.onload = () => {
     if (velas) velas.forEach((v) => (v.style.display = 'none'));
     if (fuego) fuego.forEach((f) => (f.style.display = 'none'));
 
-    const targetDate = new Date('December 1, 2024 00:00:00');
+    const targetDate = new Date('January 1, 2025 00:00:00');
     let isCountdownComplete = false;
     let isAnimating = false;
 
