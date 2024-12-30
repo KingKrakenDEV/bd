@@ -1,0 +1,186 @@
+@import url('https://fonts.cdnfonts.com/css/ica-rubrik-black');
+@import url('https://fonts.cdnfonts.com/css/jaceline');
+@import url('https://fonts.cdnfonts.com/css/rockly');
+
+.banner{
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+.banner .slider{
+    position: absolute;
+    width: 200px;
+    height: 250px;
+    top: 0%;
+    left: calc(10% - 100px);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: autoRun 20s linear infinite;
+    z-index: 1;
+    rotate: -10deg;
+}
+@keyframes autoRun{
+    from{
+        transform: perspective(1000px) rotateX(-10deg) rotateY(0deg);
+    }to{
+        transform: perspective(1000px) rotateX(-10deg) rotateY(360deg);
+    }
+}
+
+.banner .slider .item{
+    position: absolute;
+    inset: 0 0 0 0;
+    transform: 
+        rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+        translateZ(500px);
+}
+.banner .slider .item img{
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+}
+.banner .content{
+    position: absolute;
+    bottom: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1400px, 100vw);
+    height: max-content;
+    padding-bottom: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+}
+.banner .content h1{
+    font-family: 'rockly';
+    font-size: 16em;
+    line-height: 1em;
+    color: #C9a0dc;
+    position: relative;
+}
+.banner .content h1::after{
+    position: absolute;
+    top: 10%;
+    inset: 0 0 0 0;
+    content: attr(data-content);
+    z-index: 2;
+    -webkit-text-stroke: 2px #7d199c;
+    color: transparent;
+}
+.banner .content .author{
+    font-family: 'jaceline';
+    text-align: right;
+    max-width: 200px;
+    position: relative;
+    font-size: 2em;
+    color: #ffffff;
+    text-shadow: 0 10px 20px #ffffff;
+}
+.banner .content h2{
+    font-size: 2em;
+}
+.banner .content .model{
+    background-image: url(images/music.gif);
+    width: 100%;
+    height: 90vh;
+    position: absolute;
+    bottom: 40%;
+    left: 0;
+    background-size: auto 120%;
+    background-repeat: no-repeat;
+    background-position: top center;
+    z-index: 1;
+}
+@media screen and (max-width: 1023px) {
+    .banner .slider{
+        width: 160px;
+        height: 200px;
+        left: calc(50% - 80px);
+    }
+    .banner .slider .item{
+        transform: 
+            rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+            translateZ(300px);
+    }
+    .banner .content h1{
+        text-align: center;
+        width: 100%;
+        font-size: 7em;
+        
+    }
+    .banner .content .author{
+        color: #fff;
+        text-shadow: 0 10px 20px #ffffff;
+        padding: 20px;
+        z-index: 2;
+        max-width: unset;
+        width: 100%;
+        text-align: center;
+        padding: 0 30px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .banner .slider{
+        width: 100px;
+        height: 150px;
+        left: calc(50% - 50px);
+    }
+    .banner .slider .item{
+        transform: 
+            rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+            translateZ(180px);
+    }
+    .banner .content h1{
+        font-size: 5em;
+    }
+}
+.disappear {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 10s ease;
+    animation-iteration-count: 1;
+}
+
+.slider.disappear {
+	animation-name: transparency;
+	animation-duration: 8s;
+    animation-timing-function: linear;
+}
+
+.model.disappear {
+    animation-name: transparency;
+	animation-duration: 5s;
+	animation-timing-function: linear;
+}
+    
+.content.disappear {	
+	animation-name: transparency;
+	animation-duration: 3s;
+	animation-timing-function: linear;
+}
+
+.author.disappear {
+	animation-name: transparency;
+	animation-duration: 3s;
+	animation-timing-function: linear;
+}
+			
+@keyframes transparency {
+	0% { opacity: 1; }
+	50% { opacity: 0;}
+
+	/* Alternative */
+	/*
+	0% {filter: opacity(1); }
+	50% {filter: opacity(0); }
+	*/
+}
+.banner .button-container.disappear {
+    animation-name: wheels;
+	animation-duration: 6s;
+	animation-timing-function: linear;	
+}
